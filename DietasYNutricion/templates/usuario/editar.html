@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% load static %}
+      
+    {% block content %}
+	<form method="post">
+		{% csrf_token %}
+
+		<h2 class="modal-title">Modificar Usuario</h2>
+
+		{{form.as_p}}
+
+		<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<a href="{% url 'Usuario'%}">Cancelar</a>
+        		<button type="submit">Guardar</button>
+			</div>
+		</div>
+
+	</div>
+	</form>
+  	{% endblock %}
