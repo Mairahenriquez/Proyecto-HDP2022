@@ -9,14 +9,7 @@
 
 		{{form.as_p}}
 
-		<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="form-group">
-				<a href="{% url 'Usuario'%}">Cancelar</a>
-        		<button type="submit">Guardar</button>
-			</div>
-		</div>
-
-	</div>
+		<a href="{% url 'Usuario'%}">Cancelar</a>
+        <button type="submit">Confirmar</button>
 	</form>
-  	{% endblock %}
+{% endblock %}
