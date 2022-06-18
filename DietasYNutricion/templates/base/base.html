@@ -17,7 +17,20 @@
 </head>
 
 <body>
-  <div class="con-usu"></div>
+  <div class="con-usu">
+  {% if user.is_authenticated %}
+  <li>
+    <a href="{% url 'logout' %}">Cerrar Sesión</a>
+  </li>
+  <li>
+    {{ user.username }}
+  </li>
+  {% else %}
+    <li>
+    <a href="{% url 'login' %}">Iniciar Sesión</a>
+  </li>
+  {% endif %}
+  </div>
   <div class="body">
     <div class="body-container">
       <div class="container" id="home">
