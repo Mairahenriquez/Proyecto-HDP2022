@@ -38,6 +38,9 @@
           <div class="tm-page-header">
             <h1 class="d-inline-block text-uppercase">Sistema de Control de dieta y nutricion</h1>
           </div>
+              {% if user.is_superuser %}
+              Panel de Administrador
+              {% endif %}
         </div>
       </div> 
 

@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 
 from django.urls import reverse_lazy
-from .forms import RegistroForm
+from .forms import UsuarioForm
 
 # Create your views here.
 
@@ -17,17 +17,17 @@ class Usuarios(ListView):
 class RegistrarUsuarios(CreateView):
 	model = User
 	template_name = "usuario/registrar.html"
-	form_class = RegistroForm
-	success_url = reverse_lazy('Usuario')
+	form_class = UsuarioForm
+	success_url = reverse_lazy('usuario')
 
 class ModificarUsuarios(UpdateView):
     model=User
     template_name="usuario/editar.html"
-    form_class = RegistroForm
-    success_url = reverse_lazy('Usuario')
+    form_class = UsuarioForm
+    success_url = reverse_lazy('usuario')
 
 class EliminarUsuarios(DeleteView):
     model=User
     template_name = "usuario/eliminar.html"
-    success_url = reverse_lazy('Usuario')
+    success_url = reverse_lazy('usuario')
 
