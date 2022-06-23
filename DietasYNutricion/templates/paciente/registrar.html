@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+{% load static %}
+      
+    {% block content %}
+
+	<form method="post" id="PacienteForm" data-municipios-url="{% url 'ajax_load_municipios' %}">
+	
+		{% csrf_token %}
+		
+		<h2 class="modal-title">Registrar Paciente</h2>
+
+		{{ form.as_p }}
+		
+		<a href="{% url 'GestionarPaciente' %}">Cancelar</a>
+		<button type="submit">Confirmar</button>
+	
+	</form>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script>
+		$("#id_departamento").change(function () {
+			const url = $("#PacienteForm").attr("data-municipios-url");
+			const departamentoId = $(this).val();
+
+			$.ajax({
+				url: url,
+				data: {
+					'departamento': departamentoId
+				},
+				success: function (data) {
+					$("#id_municipio").html(data);
+				}
+			});
+
+		});
+	</script>
+
+{% endblock %}

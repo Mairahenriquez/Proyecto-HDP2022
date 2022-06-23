@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-form.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tooplate-style.css' %}">
+
+	{% block extra_head %}
+	{% endblock %}
+
+	<title>{% block title %}Sistema de dietas y nutricion{% endblock %}</title>
+</head>
+
+<body>
+  <div class="con-usu">
+  {% if user.is_authenticated %}
+  <li>
+    <a href="{% url 'logout' %}">Cerrar Sesión</a>
+  </li>
+  <li>
+    {{ user.username }}
+  </li>
+  {% else %}
+    <li>
+    <a href="{% url 'login' %}">Iniciar Sesión</a>
+  </li>
+  {% endif %}
+  </div>
+  <div class="body">
+    <div class="body-container">
+      <div class="container" id="home">
+        <div class="col-12 text-center">
+          <div class="tm-page-header">
+            <h1 class="d-inline-block text-uppercase">Sistema de Control de dieta y nutricion</h1>
+          </div>
+              {% if user.is_superuser %}
+              Panel de Administrador
+              {% endif %}
+        </div>
+      </div> 
+
+      {% block header %}
+        {% include 'base/header.html' %}
+      {% endblock %}
+
+      {% block extra_header %}
+      {% endblock %}
+      
+    	{% block content %}
+  		{% endblock %}
+
+  		{% block content2 %}
+  		{% endblock %}
+
+      {% block footer %}
+        {% include 'base/footer.html' %}
+      {% endblock %}
+
+      {% block extra2_footer %}
+      {% endblock %}
+
+      {% block script %}
+      {% endblock %}
+
+    </div>
+  </div>
+</body>
+</html>
