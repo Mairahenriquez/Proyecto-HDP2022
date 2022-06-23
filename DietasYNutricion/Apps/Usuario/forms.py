@@ -11,6 +11,7 @@ class UsuarioForm(forms.ModelForm):
 				'last_name',
 				'email',
 				'password',
+				'is_superuser',
 			]
 		labels = {
 				'username': 'Nombre de usuario',
@@ -18,4 +19,5 @@ class UsuarioForm(forms.ModelForm):
 				'last_name': 'Apellidos',
 				'email': 'Correo',
 				'password': 'Contraseña',
+				'is_superuser': '¿Es administrador?'
 		}
