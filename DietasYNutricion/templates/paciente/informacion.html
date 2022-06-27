@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+{% load static %}
+      
+    	{% block content %}
+			<div class="container tm-features-section" id="features">
+				<h3>Tipos de dietas disponibles:</h3>
+                    {% if object_list %}
+					<table>
+                        <tr class="tr1">
+                            <td class="td1">Tipo</td>
+                            <td class="td1">Tiempo</td>
+						</tr>
+						
+                        {% for dietas in object_list %}
+						
+						<tr class="">
+							<td class="">{{dietas.tipo}}</td>
+							<td class="">{{dietas.tiempo}} semanas</td>
+						</tr>
+                        {% endfor %}
+					</table>
+                    {% else %}
+						<table>
+							<h3>No hay plan asignado</h3>
+						</table>
+					{% endif %}
+			</div>
+		{% endblock %}

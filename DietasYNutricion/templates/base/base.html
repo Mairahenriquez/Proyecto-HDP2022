@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-form.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tooplate-style.css' %}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="body">
+    <div class="body-container">
+      <div class="header">
+        <div class="container2" id="home">
+          <div class="text-center">
+
+                <div class="sesion">
+                  {% if user.is_authenticated %}
+                    <p class="col">
+                      <a href="{% url 'logout' %}">Cerrar Sesión</a>
+                    </p>
+                    <p class="col">
+                      {{ user.first_name }} {{user.last_name}}
+                    </p>
+                    {% else %}
+                    <p class="col">
+                      <a href="{% url 'login' %}">Iniciar Sesión</a>
+                    </p>
+                    {% endif %}
+                </div>
+            
+            <div class="tm-page-header">
+                <h1 class="d-inline-block text-uppercase">Sistema de Control de dietas y nutrición</h1>
+            </div>
+
+            {% if user.is_superuser %}
+            Panel de Administrador
+            {% endif %}
+              
+            <div class="tm-page-header">
+            <img class="img" src="static/img/nutricion.jpg" data-width="360" alt="Imagen" width="360" height="90">
+            </div>
+
+            {% block header %}
+              {% include 'base/header.html' %}
+            {% endblock %}
+            
+            <div class="tm-features-section col">
+            {% block content %}
+            {% endblock %}
+            </div>
+
+            {% block footer %}
+              {% include 'base/footer.html' %}
+            {% endblock %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+{% extends 'base/base.html' %}
+{% load static %}
+      
+    	{% block content %}
+			<div class="container tm-features-section" id="features">
+					<table>
+
+						<h3>Paciente: {{object.nombre}} {{object.apellidos}}</h3>
+						<p class="cent2"><a href="{% url 'ModificarPaciente' object.id %}" class="btn btn-primary" role="button">Editar</a></p>
+						<tr class="tr1">
+							<td class="td1">Nombre</td>
+							<td class="td1">Email</td>
+							<td class="td1">Edad</td>
+							<td class="td1">Dui</td>
+							<td class="td1">Estatura</td>
+							<td class="td1">Peso</td>
+						</tr>
+						
+						<tr class="">
+							<td class="">{{object.nombre}} {{object.apellidos}}</td>
+							<td class="">{{object.email}}</td>
+							<td class="">{{object.edad}}</td>
+							<td class="">{{object.dui}}</td>
+							<td class="">{{object.estatura}} cm</td>
+							<td class="">{{object.peso}} kg</td>
+						</tr>
+
+						<table>
+								<tr class="tr1">
+									<td class="td1">Enfermedades</td>
+								</tr>
+								<tr class="">
+									<td class="">{{object.enfermedades}}</td>
+								</tr>
+								<tr class="tr1">
+									<td class="td1">Afecciones</td>
+								</tr>
+								<tr class="">
+									<td class="">{{object.afecciones}}</td>
+								</tr>
+						</table>
+
+							{% if object.plan %}
+							
+							<table>
+							<br>
+							<h3>Plan Asignado:</h3>
+								<tr class="tr1">
+								<br>
+									<td class="td1">Tipo</td>
+									<td class="td1">Tiempo</td>
+									<td class="td1">Cantidad de Carbohidratos</td>
+									<td class="td1">Cantidad de Proteinas</td>
+									<td class="td1">Cantidad de Grasas</td>
+									<td class="td1">Cantidad de Vitaminas</td>
+									<td class="td1">Cantidad de Minerales</td>
+								</tr>
+
+								<tr class="">
+									<td class="">{{object.plan.tipo}}</td>
+									<td class="">{{object.plan.tiempo}} semanas</td>
+									<td class="">{{object.plan.cantCarbohidratos}} %</td>
+									<td class="">{{object.plan.cantProteina}} %</td>
+									<td class="">{{object.plan.cantGrasas}} %</td>
+									<td class="">{{object.plan.cantVitaminas}} %</td>
+									<td class="">{{object.plan.cantMinerales}} %</td>
+								</tr>
+
+								<table>
+									<br>
+									<tr class="tr1">
+										<td class="td1">Descripción</td>
+									</tr>
+									<tr class="">
+										<td class="">{{object.plan.descripcion|safe}}</td>
+									</tr>
+								</table>
+							
+							</table>
+
+							{% else %}
+								<table>
+								<br>
+									<h3>No hay plan asignado</h3>
+								</table>
+							{% endif %}
+
+					</table>
+                    
+			</div>
+		{% endblock %}

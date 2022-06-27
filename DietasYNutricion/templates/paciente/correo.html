@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+      
+    {% block content %}
+        <h2>
+        Enviar correo
+        </h2>
+        <br>
+        <form method="POST">
+            {% csrf_token %}
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success" role="alert">
+                    {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <input type="text" name="mail" placeholder="Email del paciente">
+            <input class="btn btn-primary btn-sm" role="button" type="submit" value="Enviar">
+        </form>
+{% endblock %}

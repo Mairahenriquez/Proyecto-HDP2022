@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+      
+    {% block content %}
+	<form method="post">
+		{% csrf_token %}
+
+		<h2 class="modal-title">Eliminar Usuario</h2>
+		<br>
+        <p><strong>¿Desea eliminar el usuario {{ object }}?</strong></p>
+		<br>
+		<a class="btn btn-danger" role="button" href="{% url 'usuario'%}">Cancelar</a>
+        <button class="btn btn-primary" role="button" type="submit">Confirmar</button>
+	</form>
+{% endblock %}

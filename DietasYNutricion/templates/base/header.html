@@ -1,0 +1,35 @@
+<div class="tm-nav-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav class="navbar navbar-expand-md navbar-light">
+          <div class="collapse navbar-collapse" id="tmMainNav">
+            <ul class="navbar-nav mx-auto tm-navbar-nav">
+              {% if user.is_superuser %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'index' %}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link external" href="{% url 'usuario' %}">Gestionar usuarios</a>
+                </li>
+				      {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'index' %}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'TipoDietas' %}">Información</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'RegistrarPaciente' %}">Registro de pacientes</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'GestionarPaciente' %}">Consulta de pacientes</a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

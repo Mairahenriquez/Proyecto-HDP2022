@@ -1,0 +1,46 @@
+{% extends 'base/base.html' %}
+{% load static %}
+      
+    	{% block content %}
+			<div class="container tm-features-section" id="features" method="POST">
+				{% if object_list %}
+				<h3>Paciente: {{object}} </h3>
+					<table>
+						<tr class="tr1">
+						<td class="td1">Nombre</td>
+						<td class="td1">Email</td>
+						<td class="td1">Edad</td>
+						<td class="td1">Dui</td>
+						<td class="td1">Estatura</td>
+						<td class="td1">Peso</td>
+						<td class="td1"></td>
+						<td class="td1"></td>
+						</tr>
+
+						
+						{% for paciente in object_list %}
+						
+						<tr class="">
+							<td class="">{{paciente.nombre}} {{paciente.apellidos}}</td>
+							<td class="">{{paciente.email}}</td>
+							<td class="">{{paciente.edad}}</td>
+							<td class="">{{paciente.dui}}</td>
+							<td class="">{{paciente.estatura}} cm</td>
+							<td class="">{{paciente.peso}} kg</td>
+							<td class="td1 cent"><a href="{% url 'ModificarPaciente' paciente.id %}" class="btn btn-warning" role="button">Editar</a></td>
+							<td class="td1 cent"><a href="{% url 'DetallePaciente' paciente.id %}" class="btn btn-primary" role="button">Ver</a></td>
+							{% comment %} <td class="td1"><a href="{% url 'EliminarPaciente' paciente.id %}" class="btn btn-sm">Eliminar</a></td> {% endcomment %}
+						</tr>
+
+						{% endfor %}
+						
+					</table>
+					<br>
+					<a class="btn btn-success" role="button" href="{% url 'Email' %}" class="btn btn-sm">Enviar correo</a>
+					{% else %}
+						<h3>No hay pacientes registrados</h3>
+					{% endif %}
+					<a class="btn btn-success" role="button" href="{% url 'RegistrarPaciente'%}" class="btn btn-sm">Agregar</a>
+					
+			</div>
+			{% endblock %}

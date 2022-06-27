@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+      
+    {% block content %}
+	<form method="post" >
+		{% csrf_token %}
+
+		<h2 class="modal-title">Modificar Paciente</h2>
+		<br>
+		<div class="form">
+			{{ form|crispy }}
+		</div>
+		<br>
+		<a class="btn btn-danger" role="button" href="{% url 'GestionarPaciente'%}">Cancelar</a>
+        <button class="btn btn-primary" role="button" type="submit">Confirmar</button>
+	</form>
+{% endblock %}
