@@ -56,9 +56,9 @@ def email(request):
         template = render_to_string('paciente/email.html',{'paciente':paciente})
             
         email = EmailMessage(
-            'Un correo de prueba',
+            'Dieta asignada',
             template,
-            settings.EMAIL_HOST_USER,
+            settings.DEFAULT_FROM_EMAIL,
             [mail]
         )
         
