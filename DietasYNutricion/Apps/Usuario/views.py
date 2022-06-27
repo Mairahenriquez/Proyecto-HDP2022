@@ -1,11 +1,11 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, HttpResponseRedirect, request
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from .mixins import ValidarPermisosRequeridosMixin
 from django.urls import reverse_lazy
-from .forms import UsuarioForm
+from .forms import UsuarioForm, ModificarUsuarioForm
 
 # Create your views here.
 
@@ -25,7 +25,7 @@ class ModificarUsuarios(ValidarPermisosRequeridosMixin,UpdateView):
     permission_required = 'usuario.change_user'
     model = User
     template_name = "usuario/editar.html"
-    form_class = UsuarioForm
+    form_class = ModificarUsuarioForm
     success_url = reverse_lazy('usuario')
 
 class EliminarUsuarios(ValidarPermisosRequeridosMixin,DeleteView):
