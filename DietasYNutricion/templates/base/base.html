@@ -20,20 +20,21 @@
         <div class="container2" id="home">
           <div class="text-center">
 
-                <div class="sesion">
+            <nav class="navbar navbar-light" style="background-color: #76C99B;">
+              <div class="container-fluid">
                   {% if user.is_authenticated %}
-                    <p class="col">
-                      <a href="{% url 'logout' %}">Cerrar Sesión</a>
-                    </p>
-                    <p class="col">
+                    <span class="navbar-brand">
+                      <img src="static/img/user.png" alt="" width="30" height="30" class="d-inline align-text-middle">
                       {{ user.first_name }} {{user.last_name}}
-                    </p>
-                    {% else %}
+                    </span>
+                    <a class="btn btn-outline-dark" type="button" href="{% url 'logout' %}">Cerrar Sesión</a>
+                  {% else %}
                     <p class="col">
                       <a href="{% url 'login' %}">Iniciar Sesión</a>
                     </p>
-                    {% endif %}
-                </div>
+                  {% endif %}
+              </div>
+            </nav>
             
             <div class="tm-page-header">
                 <h1 class="d-inline-block text-uppercase">Sistema de Control de dietas y nutrición</h1>
