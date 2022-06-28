@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Paciente, Municipio, PlanAlimenticio
 from django.views.generic import CreateView, ListView, UpdateView, DetailView #, DeleteView
@@ -53,19 +53,25 @@ def email(request):
     if request.method == "POST":
         mail= request.POST['mail']
         paciente = Paciente.objects.filter(email=mail).all()
-        template = render_to_string('paciente/email.html',{'paciente':paciente})
-            
-        email = EmailMessage(
-            'Dieta asignada',
-            template,
-            settings.DEFAULT_FROM_EMAIL,
-            [mail]
-        )
-        
-        email.fail_silently = False
-        email.content_subtype = "html"
-        email.send()
 
-        messages.success(request, 'Correo enviado exitosamente')
+        if Paciente.objects.filter(email=mail).all():
+            template = render_to_string('paciente/email.html',{'paciente':paciente})
+                
+            email = EmailMessage(
+                'Dieta asignada',
+                template,
+                settings.DEFAULT_FROM_EMAIL,
+                [mail]
+            )
+            
+            email.fail_silently = False
+            email.content_subtype = "html"
+            email.send()
+
+            messages.success(request, 'Correo enviado exitosamente')
+        
+        else:
+            messages.error(request, 'Correo no encontrado')
+            return redirect('Email')
 
     return render(request, 'paciente/correo.html',{})
