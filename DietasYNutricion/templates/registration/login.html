@@ -5,7 +5,7 @@
 
 {% block content %}
 
-<body>
+<body class="login">
     <div class="tm-page-header text-center pt-4">
         <h1 class="d-inline-block text-uppercase text-success">Sistema de Control de dietas y nutrición</h1>
     </div>
@@ -15,17 +15,15 @@
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
-                        <form id="login-form" class="form" action="" method="POST">
+                        <form id="login-form" class="user" action="" method="POST">
+
+                            {% if form.errors %}
+                                <div class="alert alert-danger form2" role="alert">
+                                Su nombre de usuario o contraseña son incorrectos
+                                </div>
+                            {% endif %}
 
                             {% csrf_token %}
-
-                            {% if messages %}
-                                {% for message in messages %}
-                                    <div class="alert alert-success form2" role="alert">
-                                        {{message}}
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
 
 							<h3 class="text-center text-info">Iniciar Sesión</h3>
                             <div class="form-group">
