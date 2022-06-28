@@ -5,11 +5,11 @@
 			<div class="container tm-features-section" id="features">
 				<h3>Tipos de dietas disponibles:</h3>
                     {% if object_list %}
-					<table>
-                        <tr class="tr1">
+					<table class="table table-bordered">
+                        <thead class="table-primary">
                             <td class="td1">Tipo</td>
                             <td class="td1">Tiempo</td>
-						</tr>
+						</thead>
 						
                         {% for dietas in object_list %}
 						

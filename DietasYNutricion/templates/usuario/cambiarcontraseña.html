@@ -6,14 +6,17 @@
 		<form method="post">
 			{% csrf_token %}
 
-			<h2 class="modal-title">Modificar Usuario</h2>
-			
+			<h2 class="modal-title">Cambiar contraseña</h2>
+			{% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success form2" role="alert">
+                    {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
 			<br>
-			<div class="form">
+			<div class="form2">
 				{{ form|crispy }}
-				<br>
-				<h6 >¿Desea cambiar la contraseña?</h6>
-				<a href="{% url 'CambiarContraseña'%}" class="btn btn-default">Cambiar contraseña</a>
 			</div>
 			<br>
 

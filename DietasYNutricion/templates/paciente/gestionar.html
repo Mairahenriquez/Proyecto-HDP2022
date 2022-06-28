@@ -4,9 +4,9 @@
     	{% block content %}
 			<div class="container tm-features-section" id="features" method="POST">
 				{% if object_list %}
-				<h3>Paciente: {{object}} </h3>
-					<table>
-						<tr class="tr1">
+				<h3>Pacientes {{object}} </h3>
+					<table class="table table-bordered">
+						<thead class="table-primary">
 						<td class="td1">Nombre</td>
 						<td class="td1">Email</td>
 						<td class="td1">Edad</td>
@@ -15,7 +15,7 @@
 						<td class="td1">Peso</td>
 						<td class="td1"></td>
 						<td class="td1"></td>
-						</tr>
+						</thead>
 
 						
 						{% for paciente in object_list %}

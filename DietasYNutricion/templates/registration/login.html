@@ -4,16 +4,28 @@
 <!------ Include the above in your HEAD tag ---------->
 
 {% block content %}
+
 <body>
+    <div class="tm-page-header text-center pt-4">
+        <h1 class="d-inline-block text-uppercase text-success">Sistema de Control de dietas y nutrición</h1>
+    </div>
     <div id="login">
         <h3 class="text-center text-white pt-5">Iniciar Sesión</h3>
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
-                        <form id="login-form" class="form" action="" method="post">
+                        <form id="login-form" class="form" action="" method="POST">
 
                             {% csrf_token %}
+
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-success form2" role="alert">
+                                        {{message}}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
 
 							<h3 class="text-center text-info">Iniciar Sesión</h3>
                             <div class="form-group">
@@ -22,7 +34,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">Contraseña:</label><br>
-                                <input type="text" name="password" id="password" class="form-control">
+                                <input type="password" name="password" id="password" class="form-control">
                             </div>
                             <div class="form-group">
                                 {% comment %} <label for="remember-me" class="text-info"><span>Recuerdame</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br> {% endcomment %}
@@ -37,11 +49,13 @@
             </div>
         </div>
     </div>
+    <br>
+    <br>
     <div class="text-center pt-5">
-        <p class="col">
+        <p class="col text-success">
         Dieta y Nutricion - Vida saludable.
         </p>
-        <p class="col">
+        <p class="col text-success">
         Universidad de El Salvador - Proyecto de Herramientas de Productividad 2022.
         </p>
     </div>

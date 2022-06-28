@@ -3,18 +3,19 @@
       
     	{% block content %}
 			<div class="container tm-features-section" id="features">
-					<table>
+					<table class="table table-bordered">
 
 						<h3>Paciente: {{object.nombre}} {{object.apellidos}}</h3>
 						<p class="cent2"><a href="{% url 'ModificarPaciente' object.id %}" class="btn btn-primary" role="button">Editar</a></p>
-						<tr class="tr1">
+						
+						<thead class="table-primary">
 							<td class="td1">Nombre</td>
 							<td class="td1">Email</td>
 							<td class="td1">Edad</td>
 							<td class="td1">Dui</td>
 							<td class="td1">Estatura</td>
 							<td class="td1">Peso</td>
-						</tr>
+						</thead>
 						
 						<tr class="">
 							<td class="">{{object.nombre}} {{object.apellidos}}</td>
@@ -25,16 +26,16 @@
 							<td class="">{{object.peso}} kg</td>
 						</tr>
 
-						<table>
-								<tr class="tr1">
+						<table class="table table-bordered">
+								<thead class="table-primary">
 									<td class="td1">Enfermedades</td>
-								</tr>
+								</thead>
 								<tr class="">
 									<td class="">{{object.enfermedades}}</td>
 								</tr>
-								<tr class="tr1">
+								<thead class="table-primary">
 									<td class="td1">Afecciones</td>
-								</tr>
+								</thead>
 								<tr class="">
 									<td class="">{{object.afecciones}}</td>
 								</tr>
@@ -42,10 +43,10 @@
 
 							{% if object.plan %}
 							
-							<table>
+							<table class="table table-bordered">
 							<br>
 							<h3>Plan Asignado:</h3>
-								<tr class="tr1">
+								<thead class="table-primary">
 								<br>
 									<td class="td1">Tipo</td>
 									<td class="td1">Tiempo</td>
@@ -54,7 +55,7 @@
 									<td class="td1">Cantidad de Grasas</td>
 									<td class="td1">Cantidad de Vitaminas</td>
 									<td class="td1">Cantidad de Minerales</td>
-								</tr>
+								</thead>
 
 								<tr class="">
 									<td class="">{{object.plan.tipo}}</td>
@@ -66,11 +67,11 @@
 									<td class="">{{object.plan.cantMinerales}} %</td>
 								</tr>
 
-								<table>
+								<table class="table table-bordered">
 									<br>
-									<tr class="tr1">
+									<thead class="table-primary">
 										<td class="td1">Descripción</td>
-									</tr>
+									</thead>
 									<tr class="">
 										<td class="">{{object.plan.descripcion|safe}}</td>
 									</tr>

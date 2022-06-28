@@ -24,14 +24,12 @@
               <div class="container-fluid">
                   {% if user.is_authenticated %}
                     <span class="navbar-brand">
-                      <img src="static/img/user.png" alt="" width="30" height="30" class="d-inline align-text-middle">
+                      <img src="{% static 'img/user.png' %}" alt="" width="30" height="30" class="d-inline align-text-middle">
                       {{ user.first_name }} {{user.last_name}}
                     </span>
                     <a class="btn btn-outline-dark" type="button" href="{% url 'logout' %}">Cerrar Sesión</a>
                   {% else %}
-                    <p class="col">
-                      <a href="{% url 'login' %}">Iniciar Sesión</a>
-                    </p>
+                    <a class="btn btn-outline-dark ml-auto" type="button" href="{% url 'login' %}">Iniciar Sesión</a>
                   {% endif %}
               </div>
             </nav>
@@ -42,10 +40,12 @@
 
             {% if user.is_superuser %}
             Panel de Administrador
+            {% else %}
+            Panel de Nutricionista
             {% endif %}
               
             <div class="tm-page-header">
-            <img class="img" src="static/img/nutricion.jpg" data-width="360" alt="Imagen" width="360" height="90">
+            <img class="img" src="{% static 'img/nutricion.jpg' %}" data-width="360" alt="Imagen" width="360" height="90">
             </div>
 
             {% block header %}
