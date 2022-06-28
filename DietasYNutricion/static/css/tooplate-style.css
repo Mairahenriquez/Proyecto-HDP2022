@@ -93,7 +93,7 @@ body {
 
 .cent2 {
     text-align: right;
-    width: 95%;
+    width: 100%;
 }
 
 table {
@@ -143,5 +143,10 @@ td {
 .sesion {
     columns: 2;
     width: 90%;
+    margin: auto;
+}
+
+.form2 {
+    width: 30%;
     margin: auto;
 }
