@@ -50,17 +50,17 @@ def cambiar_contraseña(request):
         form = PasswordChangeForm(user=request.user)
         return render(request, 'usuario/cambiarcontraseña.html', {'form':form})
 
-def login_user(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('index')
-        else:
-            messages.success(request, ("Su nombre de usuario o contraseña son incorrectos"))
-            return redirect('login')
-    else:
-        return render(request, 'registration/login.html', {})
+# def login_user(request):
+#     if request.method == 'POST':
+#         username = request.POST['username']
+#         password = request.POST['password']
+#         user = authenticate(request, username=username, password=password)
+#         if user is not None:
+#             login(request, user)
+#             return redirect('index')
+#         else:
+#             messages.success(request, ("Su nombre de usuario o contraseña son incorrectos"))
+#             return redirect('login')
+#     else:
+#         return render(request, 'registration/login.html', {})
     
